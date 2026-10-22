@@ -659,9 +659,9 @@
 </div>
 
 <script>
-/* 权限控制：密码验证，默认 8888 */
+/* 权限控制：密码验证，默认 12897531 */
 const PWD_KEY = 'my_master_pwd_v1';
-let PWD = '8888';
+let PWD = '12897531';
 try{ const saved = localStorage.getItem(PWD_KEY); if(saved) PWD = saved; }catch(e){}
 
 const pwdEntry = document.createElement('div');
@@ -690,14 +690,8 @@ pwdEntry.addEventListener('click', () => {
   }
 });
 
-/* URL 带 ?edit=1 自动解锁 */
-const IS_OWNER = new URLSearchParams(location.search).get('edit') === '1';
-if(IS_OWNER){
-  document.body.classList.remove('guest');
-  pwdEntry.textContent = '⚙';
-}else{
-  document.body.classList.add('guest');
-}
+/* 默认游客模式：需输入密码解锁编辑 */
+document.body.classList.add('guest');
 
 const STORAGE_KEY = 'my_photo_journal_v2';
 const PLACEHOLDER_IMG = 'data:image/svg+xml;utf8,' + encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><rect width='200' height='200' fill='%231a1d25'/><text x='100' y='115' font-size='70' text-anchor='middle' fill='%233a4050'>✦</text></svg>`);
